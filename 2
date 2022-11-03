@@ -1,0 +1,140 @@
+'''
+s=input("请输入矩形的长:")
+h=input("请输入矩形的宽:")
+S=float(s)*float(h)
+print("矩形的面积为:",S)
+
+'''
+'''
+s = int(input("请输入一个时间值："))
+S =  s % 60
+M = ((s - S) / 60) % 60
+H = ((s - S) / 60) // 60
+if s > 86400:
+    print("输入不正确")
+elif M >=0 and S > 0:
+    print("时间为："'%2d:%.2d:%.2d'% (23 - H,59 - M,60 - S))
+elif S==0 and M==0:          
+    print("时间为："'%2d:%.2d:%.2d'%(24 - H,M, S))
+elif M >0 and S >= 0:
+    print("时间为："'%2d:%.2d:%.2d'%(23-H,60-M,S))
+    '''
+'''
+a=float(input("请输入a"))
+b=float(input("请输入b"))
+c=float(input('请输入c'))
+if a==0 and b==0:
+    print("方程无解")
+elif a==0 and b!=0:
+    print("方程有一个解，x=0",-c/b)
+elif a!=0:
+    d=b*b-4*a*c
+    if d==0:
+        print("方程有一个解，x1=x2=",-b/(2*a))
+    elif d<0:
+        print("方程无实数解")
+    else:
+        e =b*b-4*a*c
+        x1=(-b+e**0.5)/(2*a)
+        x2=(-b-e**0.5)/(2*a)
+    if x1>x2:
+            print("方程有两个实数解,x1=%.lf,x2=%.lf"%(x2,x1))
+    else:
+        print("方程有两个实数解,x1=%.lf,x2=%.lf"%(x2,x1))
+            
+'''
+'''
+a=float(input('请输入a:'))
+b=float(input('请输入b:'))
+c=float(input('请输入c:'))
+p=(a+b+c)/2
+s=(p*(p-a)*(p-b)*(p-c))**0.5
+if a<0 and b<0 and c<0:
+    print("参数不正确")
+elif a+b>c and a-b<c:
+    print("能构成三角形的三个边长,且面积为：",s)
+'''
+'''
+sh= input("请输入一个字符：")
+if sh>='a' and sh<='z':
+    print("字符为英文字母小写")
+else:
+    print("字符不是英文小写",sh)
+'''
+'''
+s= input('输入的5个字符:')
+print(s.count('0'))
+'''
+'''
+s=input("输入一个整数：")
+c=input('输入一个整数：')
+if s<c:
+    print("最大的是:",c)
+else:
+    print("最大的是：",s)
+'''
+'''
+sh=input("输入一个字母：")
+if sh>='a'and sh<='z':
+    str = sh;
+    print("大写字母为:",str.upper())
+else:
+    print('输入错误')
+
+'''
+'''
+s= int(input("输入一个年份："))
+if (s%4)==0 and (s%100)!=0:
+    print("是闰年:",s)
+else:
+    print("不是闰年")
+'''
+'''
+a= int(input("请输入a的值:"))
+b= int(input("请输入y的值："))
+if a>b:
+    print(a,b)
+else:
+    print(b,a)
+'''
+'''
+a=int(input("请输入a的值："))
+b=int(input("请输入b的值:"))
+c=int(input("请输入c的值："))
+if a<b and c<a:
+    print(c)
+elif a<b and a<c:
+    print(a)
+elif b<a and b<c:
+    print(b)
+'''
+'''
+a = int(input("当月利润:"))
+b = [10000000,600000,400000,200000,100000,0]
+c = [0.01,0.025,0.04,0.06,0.085,0.12]
+d = 0
+for idx in range(0,6):
+    if a>b[idx]:
+        d+=(a-b[idx]*c[idx])
+        print((a-b[idx])*c[idx])
+        a=b[idx]
+print(d)
+        
+'''
+'''
+x=float(input("请输入坐标x:"))
+y=float(input("请输入坐标y:"))
+if ((x-2)**2+(y-2)**2)**0.5<1:
+    print('在第一个圆内')
+elif ((x+2)**2+(y-2)**2)**0.5<1:
+    print('在第二个圆内')
+elif ((x+2)**2+(y+2)**2)**0.5<1:
+    print('在第三个圆内')
+elif ((x-2)**2+(y+2)**2)**0.5<1:
+    print('在第四个圆内')
+else:
+    print("不在任何一个圆内")
+
+'''
+
+
