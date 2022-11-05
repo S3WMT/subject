@@ -1,0 +1,34 @@
+'''
+s='abc'
+s1=list(s)
+s1[0]='1'
+
+'''
+'''
+a=input()
+for b in a:
+    if b>='0' and b<='9':
+        print(b,end='')
+print()
+'''
+'''
+def reverse(a):
+    b=''
+    for c in a:
+        b=c+b
+    return b
+'''
+'''
+def interval(a1,a2):
+    a=a1["hour"]*3600+a1["minute"]*60+a1["second"]
+    b=a2["hour"]*3600+a2["minute"]*60+a2["second"]
+    if a>b:
+        c=a-b
+    else:
+        c=b-a
+    d={}
+    d["hour"]=c//3600
+    d["mimute"]=(c-d["hour"]*3600)//60
+    d["second"]=c-c-d["hour"]*3600-d["minute"]*60
+    return d
+'''
