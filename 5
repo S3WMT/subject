@@ -1,0 +1,93 @@
+'''
+class Complex:
+    def __init__(self,x,y):
+        self.x=x
+        self.y=y
+    def show(self):
+        print("("+str(self.x)+","+str(self.y)+")")
+    c=Complex(1,2)
+c.show()
+'''
+'''
+class Computer:
+    def __init__(self,CPU,RAM,HD):
+        self.CPU=CPU
+        self.RAM=RAM
+        self.HD=HD
+    def show(self):
+        print(self.CPU,self.RAM,self.HD)
+
+c=Computer("Intel i-7",8,500)
+c.show()
+'''
+'''
+class MyInteger:
+    def __init__(self,v):
+        self.Vlaue=v
+    def show(self):
+        print(self.Value)
+    def toHex(self):
+        return hex(self.Value)
+    def toBin(self):
+        return bin(self.Vlaue)
+
+    i=MyInteger(10)
+    i.show()
+    print(i.toHex())
+print(i.toBin())
+'''
+'''
+class Person:
+    def _init_(self,name,sex,age):
+        self.__m_name=name
+        self.__m_sex=sex
+        self.__m_age=age
+    def show(self,end="\n"):
+        print(self.__m_name,self.__m_age,end=end)
+
+class Student(Person):
+    def __init__(self,name,sex,age,mclass,major):
+        Person.__init__(self,name,sex,age)
+        self.__m_class=mclass
+        self.__m_major=major
+    def sClass(self):
+        return self.__m_class
+    def sMajor(self):
+        return self.__m_major
+    def show(self):
+        Person.show(self,end=" ")
+        print(self.__m_class,self.__m_major)
+
+s=Student("A","M",20,"Class A","Computer")
+s.show()
+'''
+'''
+class Time:
+    def__init__(self,h,m,s):
+        self.hour=h
+        self.minute=m
+        self.second=s
+    def show(self):
+        s="{:02d}:{:02d}:{:02d}",format(self.hour,minute,self,second)
+        print(s)
+        return s
+    def compare(self,t):
+        a=self.hour*3600+self.minute*60+self.second
+        b=t.hour*3600+t.minute*60+t.second
+        if a>b:
+            return 1
+        elif a==b:
+            return 0
+        else:
+            return -1
+
+a=Time(12,23,1)
+b=Time(10,6,34)
+c=a.compare(b)
+if c==0:
+    print(a.show(),"is same as",b.show())
+elif c>0:
+    print(a.show(),"is later than",b.show())
+else:
+    print(a.show(),"is earlier than",b.show())
+    '''
