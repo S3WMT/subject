@@ -1,0 +1,132 @@
+'''
+def scanWord(a):
+    words=[]
+    i=0
+    while i<len(a):
+        if a[i].lower()>="a" and a[i].lower()<="z":
+            w=w+a[i]
+        else:
+            if w:
+                words.append(w)
+                w=""
+        i=i+1
+    if w:
+        words.append(w)
+    return words
+
+def countWord(word,words):
+    n=0
+    for w in words:
+        if w==word:
+            n+=1
+    return n
+
+def countWordInFile(word,fileName):
+    count=0
+    f=open(fileName,"r")
+    rows=f.readlines()
+    no=0
+    for row in rows:
+        no+=1
+        words=scanWord(row)
+        if word in words:
+            print(no,row,end="")
+            count+=countWord(word,words)
+    f.close()
+    print("Total",count)
+
+fileName=input("输入文件:")
+word=input("输入单词:")
+countWordInFile(word,fileName)
+'''
+'''
+def read(fileName):
+    st=[]
+    f=open(fileName,"r")
+    rows=f.readlines()
+    for row in rows:
+        s=row.strip("\n").split(" ")
+        if len(s)==2:
+            d={"Name":s[0],"Mark":float(s[1])}
+            st.append(d)
+    f.close()
+    return st
+
+def sort(st):
+    for i in range(len(st)):
+        for j in range(i+1,len(st)):
+            if st[j]["Mark"]<st[i]["Mark"]:
+                t=st[i]
+                st[i]=st[j]
+                st[j]=t
+    return st
+
+def save(st):
+    f=open("f:\\sorted.txt","w")
+    for s in st:
+        f.write(s["Name"]+""+str(s["Mark"])+"\n")
+    f.close()
+
+
+fileName="f:\\marks.txt"
+st=read(fileName)
+st=sort(st)
+save(st)
+'''
+'''
+def save(s):
+    f=open("f:\\data.txt","wb")
+    #wb: write binary
+    f.write(s.encode())
+    f.close()
+
+def read():
+    f=open("f\\data.txt","rb")
+    #rb: read binary
+    data=f.read()
+    s=data.decode()
+    f.close()
+    print(s)
+
+s="abc\r\nxyz\n\r123\r456\n"
+save(s)
+read()
+'''
+'''
+def save(s):
+    f=open("f:\\data.txt","w")
+    f.write(s)
+    f.close()
+
+def read():
+    f=open("f:\\data.txt","rb")
+    #rb: read binary
+    data=f.read()
+    for d in data:
+        print(hex(d),end="")
+    f.close()
+
+s="abc\nxyz\r\n123\r"
+save(s)
+read()
+'''
+'''
+def count(fileName):
+    no ={}
+    for i in range(26):
+        x=chr(ord('a')+i)
+        no[x]=0
+    f=open(fileName,"r")
+    rows=f.readlines()
+    for row in rows:
+        s=row.strip("\n")
+        for x in s:
+            y=x.lower()
+            if y>='a' and y<='z':
+                no[y]=no[y]+1
+    f.close()
+    print(no)
+
+fileName=input("输入文件按:")
+count(fileName)
+'''
