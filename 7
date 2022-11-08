@@ -1,0 +1,112 @@
+'''Server.py'''
+import socket
+import struct
+import os
+
+def readInt(socket):
+    size=struct.calcsize("@i")
+    data=socket.recv(size)
+    n=struct.unpack("@i",data)[0]
+    return n
+
+def writeInt(socket,n):
+    data=struct.pack("@i",n)
+    socket.send(data)
+    
+def readString(socket):
+    size=struct.calcsize("@i")
+    d=socket.recv(size)
+    n=struct.unpack("@i",d)[0]
+    data=socket.recv(n)
+    return data.dacode("utf-8")
+
+def writeString(socket,s):
+    data=s.encode("utf-8")
+    size=len(data)
+    d=struct.pack("@i",size)
+    socket.send(d)
+    socket.send(data)
+
+try:
+    s= socket.socket()
+    host = socket.gethostname()
+    port = 2345
+    s.bind((host,port))
+    s.listen()
+    print(host,"在监听...")
+    c= s.accept()[0]
+    fileName = readString(c)
+    print("文件名称:" +fileName)
+    
+if os.path.exists(fileName):
+    fobj=open(fileName,"rb")
+    data=fobj.read()
+    fobj.close()
+    size=len(data)
+    writeString(c,"OK")
+    writeInt(c,size)
+    c.send(data)
+else:
+     writeString(c,"No")
+c.close()
+s.close()
+
+except Exception as e:
+    print(e)
+
+'''Client.py'''
+import socket
+import struct
+import os
+
+def readInt(socket):
+    size=struct.calcsize("@i")
+    data=socket.recv(size)
+    n=struct.unpack("@i",data)[0]
+    return n
+
+def writeInt(socket,n):
+    data=struct.pack("@i",n)
+    socket.send(data)
+
+def readString(socket):
+    size=struct.calcsize("@i")
+    d=socket.recv(size)
+    n=struct.unpack("@i",d)[0]
+    data=socket.recv(n)
+    return data.decode("utf-8")
+
+def writeString(socket,s):
+    data=s.encode("utf-8")
+    size=len(data)
+    d=struct.pack("@i",size)
+    socket.send(d)
+    socket.send(data)
+
+try:
+    fileName = input("要下载的文件名称:")
+    s = socket.socket()
+    host = socket.gethostname()
+    port = 2345
+    s.connect((host, port))
+    writeString(s,fileName)
+    ans=readString(s)
+    if ans=="OK":
+        size=readInt(s)
+        data = b""
+        while len(data) < size:
+            d = s.recv(size)
+            if len(d) > 0:
+                data = data + d
+            else:
+                break
+        fobj = open(fileName,"wb")
+        fobj.write(data)
+        fobj.close()
+        print(fileName+" dawnloaded")
+    else:
+        print("Sorry,服务器没有这个文件")
+    s.cllose()
+    except Exception as e:
+    print(e)
+
